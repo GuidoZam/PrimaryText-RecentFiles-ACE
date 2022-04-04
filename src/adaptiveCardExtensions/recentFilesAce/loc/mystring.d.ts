@@ -4,8 +4,10 @@ declare interface IRecentFilesAceAdaptiveCardExtensionStrings {
   Title: string;
   SubTitle: string;
   PrimaryText: string;
-  Description: string;
+  RecentsDescription: string;
+  NoRecentsDescription: string;
   QuickViewButton: string;
+  RecentFiles: string;
 }
 
 declare module 'RecentFilesAceAdaptiveCardExtensionStrings' {

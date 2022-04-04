@@ -10,8 +10,10 @@ import { IRecentFilesAceAdaptiveCardExtensionProps, IRecentFilesAceAdaptiveCardE
 
 export class CardView extends BasePrimaryTextCardView<IRecentFilesAceAdaptiveCardExtensionProps, IRecentFilesAceAdaptiveCardExtensionState> {
   public get cardButtons(): [ICardButton] | [ICardButton, ICardButton] | undefined {
-    return [
-      {
+    let buttons = [];
+
+    if (this.getRecentFilesCount() > 0) {
+      buttons.push({
         title: strings.QuickViewButton,
         action: {
           type: 'QuickView',
@@ -19,23 +21,36 @@ export class CardView extends BasePrimaryTextCardView<IRecentFilesAceAdaptiveCar
             view: QUICK_VIEW_REGISTRY_ID
           }
         }
-      }
-    ];
+      });
+    }
+
+    return <[ICardButton] | [ICardButton, ICardButton] | undefined>buttons;
   }
 
   public get data(): IPrimaryTextCardParameters {
+    const recentCount: number = this.getRecentFilesCount();
     return {
-      primaryText: strings.PrimaryText,
-      description: strings.Description,
+      primaryText: `${recentCount} ${strings.RecentFiles}`,
+      description: (recentCount > 0) ? strings.RecentsDescription : strings.NoRecentsDescription,
       title: this.properties.title
     };
+  }
+
+  private getRecentFilesCount = (): number => {
+    let recentCount: number = 0;
+
+    if (this.state.recents && this.state.recents.length > 0) {
+      recentCount = this.state.recents.length;
+    }
+
+    return recentCount;
   }
 
   public get onCardSelection(): IQuickViewCardAction | IExternalLinkCardAction | undefined {
     return {
       type: 'ExternalLink',
       parameters: {
-        target: 'https://www.bing.com'
+        target: this.state.oneDriveUrl
       }
     };
   }

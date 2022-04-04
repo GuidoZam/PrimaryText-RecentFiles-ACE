@@ -5,7 +5,9 @@ define([], function() {
     "Title": "Adaptive Card Extension",
     "SubTitle": "Quick view",
     "PrimaryText": "SPFx Adaptive Card Extension",
-    "Description": "Create your SPFx Adaptive Card Extension solution!",
-    "QuickViewButton": "Quick view"
+    "RecentsDescription": "View your recent files by clicking the button below.",
+    "NoRecentsDescription": "No recent file to view.",
+    "QuickViewButton": "View files",
+    "RecentFiles": "recent files"
   }
 });

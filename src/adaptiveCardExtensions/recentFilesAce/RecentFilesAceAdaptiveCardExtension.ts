@@ -10,6 +10,10 @@ export interface IRecentFilesAceAdaptiveCardExtensionProps {
 }
 
 export interface IRecentFilesAceAdaptiveCardExtensionState {
+  recents: MicrosoftGraph.DriveItem[];
+  currentFile: MicrosoftGraph.DriveItem;
+  currentIndex: number;
+  oneDriveUrl: string;
 }
 
 const CARD_VIEW_REGISTRY_ID: string = 'RecentFilesAce_CARD_VIEW';
@@ -22,19 +26,41 @@ export default class RecentFilesAceAdaptiveCardExtension extends BaseAdaptiveCar
   private _deferredPropertyPane: RecentFilesAcePropertyPane | undefined;
 
   public onInit(): Promise<void> {
-    this.state = { };
+    this.state = {
+      recents: [],
+      currentFile: undefined,
+      currentIndex: 0,
+      oneDriveUrl: "https://onedrive.com/"
+     };
 
     this.cardNavigator.register(CARD_VIEW_REGISTRY_ID, () => new CardView());
     this.quickViewNavigator.register(QUICK_VIEW_REGISTRY_ID, () => new QuickView());
 
     this.context.msGraphClientFactory.getClient().then(client => {
+      // Get the recent files
       client.api("/me/drive/recent")
         .select("name,lastModifiedDateTime,webUrl")
         .get()
         .then(response => {
           const recents = <MicrosoftGraph.DriveItem[]>response.value;
-          console.log(recents);
-        })
+          this.setState({
+            recents: recents
+          });
+        });
+
+      // Get the OneDrive root folder
+      client.api("/me/drive")
+        .select("webUrl")
+        .get()
+        .then(response => {
+          const drive = <MicrosoftGraph.DriveItem>response;
+
+          if(drive.webUrl) {
+            this.setState({
+              oneDriveUrl: drive.webUrl
+            });
+          }
+        });
     });
 
     return Promise.resolve();
