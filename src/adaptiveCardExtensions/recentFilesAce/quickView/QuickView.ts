@@ -8,6 +8,8 @@ export interface IQuickViewData {
   title: string;
   recents: MicrosoftGraph.DriveItem[];
   currentFile: MicrosoftGraph.DriveItem;
+  isFirstElement: boolean;
+  isLastElement: boolean;
 }
 
 export class QuickView extends BaseAdaptiveCardView<
@@ -16,11 +18,14 @@ export class QuickView extends BaseAdaptiveCardView<
   IQuickViewData
 > {
   public get data(): IQuickViewData {
+    const currentFile = this.getCurrentFile();
     return {
       subTitle: strings.SubTitle,
       title: strings.Title,
       recents: (this.state.recents && this.state.recents.length > 0) ? this.state.recents : [],
-      currentFile: this.getCurrentFile()
+      currentFile: currentFile,
+      isFirstElement: (this.state.recents && this.state.recents.length > 0) ? (this.state.recents.indexOf(currentFile) == 0) : true,
+      isLastElement: (this.state.recents && this.state.recents.length > 0) ? (this.state.recents.indexOf(currentFile) == (this.state.recents.length - 1)) : true
     };
   }
 

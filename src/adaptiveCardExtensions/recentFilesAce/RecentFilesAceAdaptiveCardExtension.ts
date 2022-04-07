@@ -42,9 +42,8 @@ export default class RecentFilesAceAdaptiveCardExtension extends BaseAdaptiveCar
         .select("name,lastModifiedDateTime,webUrl")
         .get()
         .then(response => {
-          const recents = <MicrosoftGraph.DriveItem[]>response.value;
           this.setState({
-            recents: recents
+            recents: <MicrosoftGraph.DriveItem[]>response.value
           });
         });
 
@@ -55,7 +54,7 @@ export default class RecentFilesAceAdaptiveCardExtension extends BaseAdaptiveCar
         .then(response => {
           const drive = <MicrosoftGraph.DriveItem>response;
 
-          if(drive.webUrl) {
+          if(drive && drive.webUrl) {
             this.setState({
               oneDriveUrl: drive.webUrl
             });
