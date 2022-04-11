@@ -1,4 +1,4 @@
-# primary-text-recent-files-ace
+# primary-text-recent-files
 
 ## Summary
 
@@ -15,14 +15,14 @@ Viva Connection Adaptive Card Extension (ACE) that shows the recent files for th
 Just want to see the Adaptive Card template?
 
 <p>
-    <a href="https://adaptivecards.io/designer/index.html?card=https%3A%2F%2Fraw.githubusercontent.com%2FGuidoZam%2FPrimaryText-RecentFiles-ACE%2Fmain%2Fsrc%2FadaptiveCardExtensions%2FrecentFilesAce%2FquickView%2Ftemplate%2FQuickViewTemplate.json">
+    <a href="https://adaptivecards.io/designer/index.html?card=https%3A%2F%2Fraw.githubusercontent.com%2FGuidoZam%2FPrimaryText-RecentFiles-ACE%2Fmain%2Fsrc%2FadaptiveCardExtensions%2FrecentFilesAce%2FquickView%2Ftemplate%2FQuickViewTemplate.json&data=https%3A%2F%2Fraw.githubusercontent.com%2FGuidoZam%2FPrimaryText-RecentFiles-ACE%2Fmain%2Fassets%2FquickViewSampleData.json">
         <img src="https://raw.githubusercontent.com/GuidoZam/PrimaryText-RecentFiles-ACE/main/assets/btn-open-in-designer.png" alt="Open in Adaptive Card Designer" />
     </a>
 </p>
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.13-green.svg)
+![version](https://img.shields.io/badge/version-1.14-green.svg)
 
 ## Applies to
 
@@ -39,7 +39,7 @@ Just want to see the Adaptive Card template?
 
 Solution|Author(s)
 --------|---------
-primary-text-recent-files-ace | [GuidoZam](https://github.com/GuidoZam)
+primary-text-recent-files | [GuidoZam](https://github.com/GuidoZam)
 
 ## Version history
 

@@ -40,6 +40,7 @@ export class QuickView extends BaseAdaptiveCardView<
   }
 
   public get template(): ISPFxAdaptiveCard {
+    console.log(this.data);
     return require('./template/QuickViewTemplate.json');
   }
 
