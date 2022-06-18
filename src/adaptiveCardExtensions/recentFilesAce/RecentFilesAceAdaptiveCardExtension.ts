@@ -31,7 +31,7 @@ export default class RecentFilesAceAdaptiveCardExtension extends BaseAdaptiveCar
       currentFile: undefined,
       currentIndex: 0,
       oneDriveUrl: "https://onedrive.com/"
-     };
+    };
 
     this.cardNavigator.register(CARD_VIEW_REGISTRY_ID, () => new CardView());
     this.quickViewNavigator.register(QUICK_VIEW_REGISTRY_ID, () => new QuickView());
